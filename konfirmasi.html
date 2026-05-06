@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Konfirmasi Pesanan - ValenStore</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="css/konfirmasi.css"/>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="navbar-logo">VALEN<span>STORE</span></div>
+    <a href="index.html" style="color: white; font-size: 0.8rem; font-weight: 600; text-decoration: none;">Kembali</a>
+  </nav>
+
+  <!-- HEADER -->
+  <div class="konfirmasi-header">
+    <h1>Konfirmasi Pesanan</h1>
+    <p>Periksa kembali data kamu sebelum melanjutkan</p>
+  </div>
+
+  <!-- RINGKASAN PESANAN -->
+  <div class="section">
+    <div class="section-title">Ringkasan Pesanan</div>
+    <div class="summary-card">
+      <div class="summary-header">Detail Paket</div>
+      <div class="summary-body">
+        <div class="summary-row">
+          <span class="label">Paket</span>
+          <span class="value" id="sum-paket">-</span>
+        </div>
+        <div class="summary-row">
+          <span class="label">Jumlah Robux</span>
+          <span class="value" id="sum-robux">-</span>
+        </div>
+        <div class="summary-row">
+          <span class="label">Harga</span>
+          <span class="value red" id="sum-harga">-</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="summary-card">
+      <div class="summary-header">Data Akun</div>
+      <div class="summary-body">
+        <div class="summary-row">
+          <span class="label">Username</span>
+          <span class="value" id="sum-username">-</span>
+        </div>
+        <div class="summary-row">
+          <span class="label">Password</span>
+          <span class="value" id="sum-password">-</span>
+        </div>
+        <div class="summary-row">
+          <span class="label">Backup Code 1</span>
+          <span class="value" id="sum-bc1">-</span>
+        </div>
+        <div class="summary-row">
+          <span class="label">Backup Code 2</span>
+          <span class="value" id="sum-bc2">-</span>
+        </div>
+        <div class="summary-row">
+          <span class="label">Backup Code 3</span>
+          <span class="value" id="sum-bc3">-</span>
+        </div>
+        <div class="summary-row">
+          <span class="label">No. WhatsApp</span>
+          <span class="value" id="sum-wa">-</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PILIH ADMIN -->
+  <div class="section" style="padding-top: 0;">
+    <div class="section-title">Pilih Admin</div>
+    <div class="admin-options">
+      <div class="admin-option selected" id="admin-1" onclick="pilihAdmin(1)">
+        <div class="admin-name">Admin 1</div>
+        <div class="admin-num">+62 858-8353-3298</div>
+      </div>
+      <div class="admin-option" id="admin-2" onclick="pilihAdmin(2)">
+        <div class="admin-name">Admin 2</div>
+        <div class="admin-num">+62 857-8107-1600</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOMBOL BAYAR -->
+  <div class="section" style="padding-top: 0;">
+    <div class="alert alert-error" id="error-msg">Silakan pilih admin terlebih dahulu.</div>
+    <button class="btn btn-wa" onclick="bayarViaWA()">Bayar via WhatsApp</button>
+    <br/>
+    <a href="index.html" class="btn btn-outline">Kembali Edit Data</a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <strong>ValenStore</strong> &copy; 2025 &mdash; Top Up Robux Terpercaya
+  </footer>
+
+  <script src="js/konfirmasi.js"></script>
+</body>
+</html>

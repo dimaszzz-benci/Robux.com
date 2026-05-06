@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Panel - ValenStore</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <link rel="stylesheet" href="../css/admin.css"/>
+</head>
+<body class="admin-body">
+
+  <!-- LOGIN PAGE -->
+  <div class="login-wrap" id="login-page">
+    <div class="login-card">
+      <div class="login-logo">VALENSTORE</div>
+      <div class="login-sub">Panel Admin</div>
+      <div class="alert alert-error" id="login-error">Username atau password salah.</div>
+      <div class="form-group">
+        <label>Username</label>
+        <input type="text" id="inp-login-user" placeholder="Masukkan username"/>
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" id="inp-login-pass" placeholder="Masukkan password"/>
+      </div>
+      <br/>
+      <button class="btn btn-primary" onclick="login()">Masuk</button>
+    </div>
+  </div>
+
+  <!-- DASHBOARD PAGE -->
+  <div id="dashboard-page" style="display: none;">
+
+    <!-- NAVBAR -->
+    <div class="admin-navbar">
+      <div class="admin-navbar-logo">VALENSTORE ADMIN</div>
+      <button class="btn-logout" onclick="logout()">Keluar</button>
+    </div>
+
+    <!-- TABS -->
+    <div class="admin-tabs">
+      <button class="tab-btn active" onclick="bukaTab('tab-pesanan')">Pesanan</button>
+      <button class="tab-btn" onclick="bukaTab('tab-produk')">Produk</button>
+      <button class="tab-btn" onclick="bukaTab('tab-pengaturan')">Pengaturan</button>
+    </div>
+
+    <!-- TAB PESANAN -->
+    <div class="tab-content active" id="tab-pesanan">
+      <div class="stats-row">
+        <div class="stat-card">
+          <div class="stat-label">Total Pesanan</div>
+          <div class="stat-value" id="stat-total">0</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Pending</div>
+          <div class="stat-value" id="stat-pending">0</div>
+        </div>
+      </div>
+      <div class="section-title">Daftar Pesanan</div>
+      <div class="orders-list" id="orders-list">
+        <p style="color: var(--muted); font-size: 0.85rem;">Memuat pesanan...</p>
+      </div>
+    </div>
+
+    <!-- TAB PRODUK -->
+    <div class="tab-content" id="tab-produk">
+      <div class="section-title">Kelola Produk</div>
+      <div id="produk-list">
+        <p style="color: var(--muted); font-size: 0.85rem;">Memuat produk...</p>
+      </div>
+    </div>
+
+    <!-- TAB PENGATURAN -->
+    <div class="tab-content" id="tab-pengaturan">
+      <div class="section-title">Pengaturan Toko</div>
+
+      <div class="setting-row">
+        <div class="setting-info">
+          <div class="setting-label">Status Toko</div>
+          <div class="setting-desc">Matikan jika toko sedang tutup</div>
+        </div>
+        <label class="switch">
+          <input type="checkbox" id="toggle-toko" checked onchange="simpanStatusToko()"/>
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <div class="setting-row" style="display: block;">
+        <div class="setting-label">Ganti Password Admin</div>
+        <div class="setting-desc" style="margin-bottom: 12px;">Ubah password untuk akun admin ini</div>
+        <div class="form-group">
+          <label>Password Baru</label>
+          <input type="password" id="inp-new-pass" placeholder="Masukkan password baru"/>
+        </div>
+        <button class="btn btn-primary" onclick="gantiPassword()">Simpan Password</button>
+      </div>
+
+      <div class="alert alert-success" id="setting-success">Pengaturan berhasil disimpan.</div>
+      <div class="alert alert-error" id="setting-error">Gagal menyimpan pengaturan.</div>
+    </div>
+
+  </div>
+
+  <script src="js/admin.js"></script>
+</body>
+        </html>

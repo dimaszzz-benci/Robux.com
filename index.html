@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ValenStore - Top Up Robux</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="css/home.css"/>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="navbar-logo">VALEN<span>STORE</span></div>
+    <div class="nav-badge">Promo 10%</div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <h1>TOP UP ROBUX</h1>
+    <p>Murah, Aman, dan Proses Cepat</p>
+    <div class="hero-badges">
+      <div class="hero-badge">Via Login</div>
+      <div class="hero-badge">1-120 Menit</div>
+      <div class="hero-badge">100% Aman</div>
+    </div>
+  </div>
+
+  <!-- TOKO TUTUP -->
+  <div class="section">
+    <div class="toko-tutup" id="toko-tutup">
+      Toko sedang tutup. Silakan kembali lagi nanti.
+    </div>
+  </div>
+
+  <!-- FORM DATA AKUN -->
+  <div class="section">
+    <div class="section-title">Data Akun Roblox</div>
+    <div class="card">
+      <div class="form-group">
+        <label>Username Roblox</label>
+        <input type="text" id="inp-username" placeholder="Masukkan username"/>
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" id="inp-password" placeholder="Masukkan password"/>
+      </div>
+      <div class="form-group">
+        <label>Backup Code 1</label>
+        <input type="text" id="inp-bc1" placeholder="Kode pemulihan 1"/>
+      </div>
+      <div class="form-group">
+        <label>Backup Code 2</label>
+        <input type="text" id="inp-bc2" placeholder="Kode pemulihan 2"/>
+      </div>
+      <div class="form-group">
+        <label>Backup Code 3</label>
+        <input type="text" id="inp-bc3" placeholder="Kode pemulihan 3"/>
+      </div>
+      <div class="form-group">
+        <label>Nomor WhatsApp</label>
+        <input type="tel" id="inp-wa" placeholder="Contoh: 08123456789"/>
+      </div>
+    </div>
+  </div>
+
+  <!-- PILIH PAKET -->
+  <div class="section">
+    <div class="section-title">Pilih Paket Robux</div>
+    <div class="packages-grid" id="packages-grid">
+      <!-- diisi oleh main.js -->
+      <p style="color: var(--muted); font-size: 0.85rem;">Memuat paket...</p>
+    </div>
+  </div>
+
+  <!-- CATATAN -->
+  <div class="section">
+    <div class="notes-box">
+      <p>
+        <strong>Catatan Penting:</strong><br/>
+        - Akun Roblox baru harus dimainkan minimal <strong>30 menit</strong> terlebih dahulu.<br/>
+        - Robux yang diisi merupakan <strong>legal 100%</strong> dan aman.<br/>
+        - Kesalahan pengisian data <strong>bukan tanggung jawab admin</strong>.<br/>
+        - Estimasi proses: <strong>1-120 menit</strong> di luar event, <strong>maksimal 2x24 jam</strong> saat event berlangsung.
+      </p>
+    </div>
+  </div>
+
+  <!-- TOMBOL BELI -->
+  <div class="section" style="padding-top: 0;">
+    <div class="alert alert-error" id="error-msg">Mohon lengkapi semua data dan pilih paket Robux.</div>
+    <button class="btn btn-primary" id="btn-beli" onclick="prosesOrder()">Beli Sekarang</button>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <strong>ValenStore</strong> &copy; 2025 &mdash; Top Up Robux Terpercaya
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+  </html>

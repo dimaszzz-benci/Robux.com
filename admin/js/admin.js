@@ -23,10 +23,6 @@ function formatTanggal(str) {
   });
 }
 
-// =====================
-// AUTH
-// =====================
-
 async function login() {
   const username = document.getElementById('inp-login-user').value.trim();
   const password = document.getElementById('inp-login-pass').value.trim();
@@ -37,23 +33,26 @@ async function login() {
     return;
   }
 
-  const res = await fetch(
-    `${SUPABASE_URL}/rest/v1/admins?username=eq.${username}&password=eq.${password}&select=*`,
-    { headers: headers() }
-  );
+  try {
+    const url = `${SUPABASE_URL}/rest/v1/admins?username=eq.${username}&password=eq.${password}&select=*`;
+    const res = await fetch(url, { headers: headers() });
+    const data = await res.json();
 
-  const data = await res.json();
+    alert('Response: ' + JSON.stringify(data));
 
-  if (data.length === 0) {
-    errEl.classList.add('show');
-    return;
+    if (data.length === 0) {
+      errEl.classList.add('show');
+      return;
+    }
+
+    currentAdmin = data[0];
+    errEl.classList.remove('show');
+    document.getElementById('login-page').style.display = 'none';
+    document.getElementById('dashboard-page').style.display = 'block';
+    loadDashboard();
+  } catch(e) {
+    alert('Error: ' + e.message);
   }
-
-  currentAdmin = data[0];
-  errEl.classList.remove('show');
-  document.getElementById('login-page').style.display = 'none';
-  document.getElementById('dashboard-page').style.display = 'block';
-  loadDashboard();
 }
 
 function logout() {
@@ -62,10 +61,6 @@ function logout() {
   document.getElementById('dashboard-page').style.display = 'none';
 }
 
-// =====================
-// TABS
-// =====================
-
 function bukaTab(tabId) {
   document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
@@ -73,19 +68,11 @@ function bukaTab(tabId) {
   event.target.classList.add('active');
 }
 
-// =====================
-// DASHBOARD
-// =====================
-
 async function loadDashboard() {
   await loadPesanan();
   await loadProduk();
   await loadPengaturan();
 }
-
-// =====================
-// PESANAN
-// =====================
 
 async function loadPesanan() {
   const res = await fetch(
@@ -149,10 +136,6 @@ function hubungiWA(nomor, username, paket) {
   window.open(`https://wa.me/62${nomor.replace(/^0/, '')}?text=${pesan}`, '_blank');
 }
 
-// =====================
-// PRODUK
-// =====================
-
 async function loadProduk() {
   const res = await fetch(
     `${SUPABASE_URL}/rest/v1/products?order=robux.asc&select=*`,
@@ -173,7 +156,6 @@ async function loadProduk() {
           <div class="product-admin-robux">${pkg.robux} Robux</div>
         </div>
       </div>
-
       <div class="product-fields">
         <div class="form-group">
           <label>Harga (Rp)</label>
@@ -188,12 +170,10 @@ async function loadProduk() {
           <input type="number" id="stok-${pkg.id}" value="${pkg.stok}"/>
         </div>
       </div>
-
       <div class="form-group">
         <label>URL Gambar</label>
         <input type="text" id="gambar-${pkg.id}" value="${pkg.gambar_url || ''}" placeholder="https://..." oninput="previewGambar(${pkg.id})"/>
       </div>
-
       <div class="product-toggle">
         <span>Tampilkan Produk</span>
         <label class="switch">
@@ -201,7 +181,6 @@ async function loadProduk() {
           <span class="slider"></span>
         </label>
       </div>
-
       <button class="btn btn-primary" onclick="simpanProduk(${pkg.id})">Simpan</button>
     </div>
   `).join('');
@@ -230,10 +209,6 @@ async function simpanProduk(id) {
 
   alert('Produk berhasil disimpan.');
 }
-
-// =====================
-// PENGATURAN
-// =====================
 
 async function loadPengaturan() {
   const res = await fetch(
